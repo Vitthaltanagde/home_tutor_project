@@ -15,4 +15,4 @@ home_tutor_project/
 ├── requirements.txt           # Python dependencies
 └── README.md                  # Project description
 some exstra pages also added just ingore it.
-if anyone wnat to extend project then plzz mail ---vitthaltangade6gmail.com
+if anyone wnat to extend project then plzz mail ---vitthaltangade6@gmail.com
