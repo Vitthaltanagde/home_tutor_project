@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+{% block title %}Student Signup{% endblock %}
+{% block content %}
+<h2 class="text-2xl font-bold text-blue-700 mb-4 p-4     text-center">Student/Parent Signup</h2>
+<form method="POST" class="bg-white p-6 rounded shadow-md max-w-xl mx-auto space-y-4">
+    <input name="name" placeholder="Parent/Student Name" class="w-full border p-2 rounded" required>
+    <!-- <input name="grade" type="number" min="1" max="12" placeholder="Grade (1 to 12)" class="w-full border p-2 rounded" required> -->
+<!-- <label for="grade" class="block font-semibold mb-2">Select Grade</label> -->
+<select name="grade" id="grade" class="w-full border p-2 rounded" required>
+  <!-- Early Education -->
+  <optgroup label="Early Education">
+      <option value="">Select Grade </option>
+    <option value="Nursery">Nursery</option>
+    <option value="Junior KG">Junior KG</option>
+    <option value="Senior KG">Senior KG</option>
+  </optgroup>
+
+  <!-- Primary -->
+  <optgroup label="Primary (Class 1 - 5)">
+    <option value="1">Class 1</option>
+    <option value="2">Class 2</option>
+    <option value="3">Class 3</option>
+    <option value="4">Class 4</option>
+    <option value="5">Class 5</option>
+  </optgroup>
+
+  <!-- Middle School -->
+  <optgroup label="Middle School (Class 6 - 8)">
+    <option value="6">Class 6</option>
+    <option value="7">Class 7</option>
+    <option value="8">Class 8</option>
+  </optgroup>
+
+  <!-- High School -->
+  <optgroup label="High School (Class 9 - 10)">
+    <option value="9">Class 9</option>
+    <option value="10">Class 10</option>
+  </optgroup>
+
+  <!-- Higher Secondary -->
+  <optgroup label="Higher Secondary (Class 11 - 12)">
+    <option value="11">Class 11</option>
+    <option value="12">Class 12</option>
+    <option value="JEE">JEE</option>
+    <option value="NEET">NEET</option>
+    <option value="CA Foundation">CA Foundation</option>
+  </optgroup>
+
+  <!-- Engineering -->
+  <optgroup label="Engineering & Beyond">
+    <option value="Engineering Semester 1">Engineering Semester 1</option>
+    <option value="Engineering Semester 2">Engineering Semester 2</option>
+    <option value="Engineering Semester 3">Engineering Semester 3</option>
+    <option value="Engineering Semester 4">Engineering Semester 4</option>
+    <option value="Engineering Semester 5">Engineering Semester 5</option>
+    <option value="Engineering Semester 6">Engineering Semester 6</option>
+    <option value="Engineering Semester 7">Engineering Semester 7</option>
+    <option value="Engineering Semester 8">Engineering Semester 8</option>
+  </optgroup>
+</select>
+
+    
+    <select name="mode" class="w-full border p-2 rounded" required>
+        <option value="">Select Mode</option>
+        <option>Online</option>
+        <option>Offline</option>
+    </select>
+    <select name="board" class="w-full border p-2 rounded" required>
+        <option value="">Select Board</option>
+        <option>CBSE</option>
+        <option>ICSE</option>
+        <option>State</option>
+        <option>IB</option>
+         
+    </select>
+   <select name="city" class="w-full border p-2 rounded" required>
+    <option value="">Select Location</option>
+    {% for loc in locations %}
+        <option value="{{ loc.location }} ({{ loc.pincode }})">{{ loc.location }} - {{ loc.pincode }}</option>
+    {% endfor %}
+</select>
+
+
+
+
+    <input name="address" placeholder="Full Address" class="w-full border p-2 rounded" required>
+    <input name="contact" placeholder="Contact Number" class="w-full border p-2 rounded" required>
+    <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 px-4 py-2 rounded text-white font-semibold">Get Free Demo Class</button>
+</form>
+{% endblock %}

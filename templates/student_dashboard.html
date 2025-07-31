@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block title %}Student Dashboard{% endblock %}
+{% block content %}
+<h2 class="text-2xl font-bold text-blue-700 mb-4">Available Tutors</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {% for tutor in tutors %}
+    <div class="bg-white p-4 rounded shadow">
+        <h3 class="font-bold text-lg">{{ tutor.name }}</h3>
+        <p><strong>Mobile:</strong> {{ tutor.mobile }}</p>
+        <p><strong>Email:</strong> {{ tutor.email }}</p>
+        <p><strong>Class:</strong> {{ tutor.course }}</p>
+        <p><strong>Board:</strong> {{ tutor.board }}</p>
+        <p><strong>Subjects:</strong> {{ tutor.subjects }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

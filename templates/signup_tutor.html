@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% block title %}Tutor Signup{% endblock %}
+{% block content %}
+
+<h2 class="text-2xl font-bold text-blue-700 mb-4   text-center     ">Tutor Signup</h2>
+<form method="POST" class="bg-white p-6 rounded shadow-md max-w-xl mx-auto space-y-4">
+    <input name="name" placeholder="Full Name" class="w-full border p-2 rounded" required>
+    <input name="mobile" placeholder="Mobile Number" class="w-full border p-2 rounded" required>
+    <input name="email" type="email" placeholder="Email Address" class="w-full border p-2 rounded" required>
+    <input name="course" placeholder="Course/Class You Teach (e.g. Class X)" class="w-full border p-2 rounded" required>
+    
+    <select name="board" class="w-full border p-2 rounded" required>
+        <option value="">Select Board</option>
+        <option>CBSE</option>
+        <option>ICSE</option>
+        <option>State</option>
+        <option>IB</option>
+    </select>
+
+    <label class="block font-semibold">Subjects You Teach</label>
+    <div class="grid grid-cols-2 gap-2">
+        <label><input type="checkbox" name="subjects" value="Mathematics" class="mr-2"> Mathematics</label>
+        <label><input type="checkbox" name="subjects" value="Science" class="mr-2"> Science</label>
+        <label><input type="checkbox" name="subjects" value="Biology" class="mr-2"> Biology</label>
+        <label><input type="checkbox" name="subjects" value="Chemistry" class="mr-2"> Chemistry</label>
+        <label><input type="checkbox" name="subjects" value="Social Science" class="mr-2"> Social Science</label>
+        <label><input type="checkbox" name="subjects" value="English" class="mr-2"> English</label>
+    </div>
+
+    <button type="submit" class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded text-white font-semibold">
+        Find Students
+    </button>
+</form>
+{% endblock %}
