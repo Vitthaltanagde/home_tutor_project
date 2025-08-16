@@ -1,0 +1,38 @@
+# robots.txt for GuruGO – Home Tutor Finder Website
+
+User-agent: *
+# Block sensitive dashboard areas
+Disallow: /admin-dashboard
+Disallow: /student-dashboard
+Disallow: /tutor-dashboard
+Disallow: /login
+Disallow: /logout
+Disallow: /verify-otp
+
+# Block static files and system folders
+Disallow: /static/
+Disallow: /__pycache__/
+Disallow: /venv/
+
+# Allow access to all public pages
+Allow: /
+
+# Sitemap location for search engines
+Sitemap: https://www.gurugo.in/sitemap.xml
+
+# Crawl-delay (optional – for slower server performance)
+# Crawl-delay: 5
+
+# Specific rules for known bots (optional)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+    

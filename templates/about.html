@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block title %}About Us - GuruGO{% endblock %}
+
+{% block content %}
+<section class="bg-gradient-to-br from-blue-50 to-white py-16 sm:py-20">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+    
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-blue-800 mb-6 tracking-tight sm:tracking-wide" data-aos="fade-down">
+      About GuruGO
+    </h2>
+    <p class="text-base sm:text-lg text-gray-700 mb-12 sm:mb-16 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up">
+      GuruGO is a smart and trusted platform connecting students and parents with highly qualified tutors in Pune.
+      We aim to bridge the gap between academic needs and teaching talent through innovation and technology.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 text-left mb-16 sm:mb-20">
+      <div class="bg-white rounded-xl shadow-md p-5 sm:p-6" data-aos="fade-right">
+        <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-2">Our Mission</h3>
+        <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+          To provide reliable and verified home tutoring services that help students grow academically while
+          supporting tutors with meaningful job opportunities.
+        </p>
+      </div>
+      <div class="bg-white rounded-xl shadow-md p-5 sm:p-6" data-aos="fade-left">
+        <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-2">Why Choose Us?</h3>
+        <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+          We offer curated tutor profiles, student-tutor matching, admin supervision, and a secure platform—all
+          designed for ease and effectiveness.
+        </p>
+      </div>
+    </div>
+
+    <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-700 mb-8 sm:mb-10" data-aos="zoom-in">
+      Meet Our Directors
+    </h3>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
+    {% set directors = [
+  {"name":"Prof. Dipak Sapkal","title":"Co-Founder & Management Head",
+   "desc":"Leads GuruGO's strategic planning and management, ensuring smooth operations and organizational growth.",
+   "img":"dipak.png"},
+  {"name":"Er. Vitthal Tangade","title":"Co-Founder & Tech Head",
+   "desc":"Drives the technical vision and innovation at GuruGO, ensuring our platform is secure, efficient, and user-friendly.",
+   "img":"vitthal.png"},
+  {"name":"Dr. Sandeep Sapkal","title":"Co-Founder & Operations Head",
+   "desc":"Oversees daily operations and coordinates tutor-student connections, making the learning journey smooth and impactful.",
+   "img":"sandeep.svg"}
+] %}
+
+
+      {% for d in directors %}
+      <div class="bg-white rounded-2xl shadow-xl p-4 sm:p-6 hover:scale-105 transition-transform duration-300" data-aos="flip-up">
+        <img src="{{ url_for('static', filename='img/' + d.img) }}" alt="{{ d.name }}"
+             class="w-24 h-24 sm:w-28 sm:h-28 rounded-full mx-auto object-cover mb-3 sm:mb-4 shadow-md">
+        <h4 class="text-lg sm:text-xl font-semibold text-gray-800 text-center">{{ d.name }}</h4>
+        <p class="text-xs sm:text-sm text-blue-600 text-center font-medium mt-1">{{ d.title }}</p>
+        <p class="text-gray-600 text-xs sm:text-sm mt-2 text-center leading-snug">{{ d.desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

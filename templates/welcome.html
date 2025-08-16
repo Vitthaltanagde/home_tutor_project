@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @keyframes popupFadeIn {
+            0% { opacity: 0; transform: scale(0.85); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .popup-animate {
+            animation: popupFadeIn 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-100 to-indigo-200 min-h-screen flex items-center justify-center p-4">
+
+    <!-- Main Page Content -->
+    <div class="text-center">
+        <h1 class="text-4xl sm:text-5xl font-bold text-indigo-800 mb-6">Welcome, {{ name }}!</h1>
+        <p class="text-gray-600 text-lg">
+            Your dashboard is coming soon. Please join the group to get started!
+        </p>
+    </div>
+
+    {% if show_popup %}
+    <!-- Popup Overlay -->
+    <div id="popup-overlay" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <!-- Popup Modal -->
+        <div id="popup-modal" class="bg-white popup-animate rounded-3xl shadow-2xl p-6 sm:p-8 w-full max-w-md border-2 border-indigo-500 text-center relative">
+
+            <!-- Close Button -->
+            <button id="close-popup" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <!-- Popup Content -->
+            <h2 class="text-2xl sm:text-3xl font-bold text-green-600 mb-4">🎉 Thank You!</h2>
+            <p class="text-gray-800 text-lg">
+                You've successfully signed up, <span class="font-semibold">{{ name }}</span>.
+            </p>
+            <p class="text-sm text-gray-600 mt-2">
+                🕐 Our team will reach you within 
+                <span class="font-bold text-indigo-600">2 hours</span>.
+            </p>
+
+            <!-- Home Button -->
+            <a href="{{ url_for('home') }}" 
+               class="inline-block mt-6 w-full bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-full font-semibold">
+                Go to Home
+            </a>
+        </div>
+    </div>
+    {% endif %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const overlay = document.getElementById("popup-overlay");
+            const closeBtn = document.getElementById("close-popup");
+
+            if (closeBtn) {
+                closeBtn.addEventListener("click", () => {
+                    overlay.classList.add("hidden");
+                });
+            }
+
+            if (overlay) {
+                overlay.addEventListener("click", (e) => {
+                    if (e.target === overlay) {
+                        overlay.classList.add("hidden");
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

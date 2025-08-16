@@ -2,33 +2,143 @@
 {% block title %}Tutor Signup{% endblock %}
 {% block content %}
 
-<h2 class="text-2xl font-bold text-blue-700 mb-4   text-center     ">Tutor Signup</h2>
-<form method="POST" class="bg-white p-6 rounded shadow-md max-w-xl mx-auto space-y-4">
-    <input name="name" placeholder="Full Name" class="w-full border p-2 rounded" required>
-    <input name="mobile" placeholder="Mobile Number" class="w-full border p-2 rounded" required>
-    <input name="email" type="email" placeholder="Email Address" class="w-full border p-2 rounded" required>
-    <input name="course" placeholder="Course/Class You Teach (e.g. Class X)" class="w-full border p-2 rounded" required>
-    
-    <select name="board" class="w-full border p-2 rounded" required>
-        <option value="">Select Board</option>
-        <option>CBSE</option>
-        <option>ICSE</option>
-        <option>State</option>
-        <option>IB</option>
-    </select>
+<section class="min-h-screen bg-gray-50 py-6 md:py-10 relative overflow-hidden">
 
-    <label class="block font-semibold">Subjects You Teach</label>
-    <div class="grid grid-cols-2 gap-2">
-        <label><input type="checkbox" name="subjects" value="Mathematics" class="mr-2"> Mathematics</label>
-        <label><input type="checkbox" name="subjects" value="Science" class="mr-2"> Science</label>
-        <label><input type="checkbox" name="subjects" value="Biology" class="mr-2"> Biology</label>
-        <label><input type="checkbox" name="subjects" value="Chemistry" class="mr-2"> Chemistry</label>
-        <label><input type="checkbox" name="subjects" value="Social Science" class="mr-2"> Social Science</label>
-        <label><input type="checkbox" name="subjects" value="English" class="mr-2"> English</label>
+  <!-- Floating background shapes for animation -->
+  <div class="absolute top-0 left-0 w-40 h-40 bg-blue-100 rounded-full blur-3xl opacity-40 animate-pulse"></div>
+  <div class="absolute bottom-0 right-0 w-56 h-56 bg-green-100 rounded-full blur-3xl opacity-40 animate-ping"></div>
+
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-start px-4 sm:px-6">
+
+    <!-- Left Info Section -->
+    <div class="space-y-4 sm:space-y-6 text-center md:text-left" data-aos="fade-right" data-aos-duration="800">
+      <h2 class="text-2xl sm:text-3xl font-bold text-blue-700">Become a GuruGO Tutor</h2>
+      <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+        Join the GuruGO platform and connect with thousands of eager students across your city.
+        Share your knowledge and start earning today with full flexibility and no hidden costs.
+      </p>
+      <ul class="list-disc list-inside text-gray-700 text-sm sm:text-base space-y-1 inline-block md:block">
+        <li>Unlimited Free Demo Classes</li>
+        <li>No Registration Fees</li>
+        <li>Full Support Until You’re Satisfied</li>
+        
+      </ul>
     </div>
 
-    <button type="submit" class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded text-white font-semibold">
-        Find Students
-    </button>
-</form>
+    <!-- Signup Form -->
+    <form method="POST" class="bg-white p-4 sm:p-8 rounded-xl shadow-xl space-y-4 relative z-10"
+      data-aos="fade-left" data-aos-duration="800">
+
+      <h3 class="text-lg sm:text-xl font-semibold text-gray-800 mb-4">Tutor Signup</h3>
+
+      <!-- Inputs with animation -->
+      <div data-aos="fade-up" data-aos-delay="100">
+        <input name="name" placeholder="Full Name"
+          class="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-4 focus:ring-blue-200 transition-all duration-300 text-sm sm:text-base" required>
+      </div>
+
+      <div data-aos="fade-up" data-aos-delay="200">
+        <input name="mobile" placeholder="Mobile Number"
+          class="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-4 focus:ring-blue-200 transition-all duration-300 text-sm sm:text-base" required>
+      </div>
+
+      <div data-aos="fade-up" data-aos-delay="300">
+        <input name="email" type="email" placeholder="Email Address"
+          class="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-4 focus:ring-blue-200 transition-all duration-300 text-sm sm:text-base" required>
+      </div>
+
+      <div data-aos="fade-up" data-aos-delay="400">
+        <input name="experience" placeholder="Experience"
+          class="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-4 focus:ring-blue-200 transition-all duration-300 text-sm sm:text-base" required>
+      </div>
+
+      <div data-aos="fade-up" data-aos-delay="500">
+        <input name="course" placeholder="Course/Class You Teach (e.g. from 1 to 10)"
+          class="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-4 focus:ring-blue-200 transition-all duration-300 text-sm sm:text-base" required>
+      </div>
+
+      <!-- Gender -->
+      <div data-aos="fade-up" data-aos-delay="600">
+        <select name="gender"
+          class="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-4 focus:ring-blue-200 transition-all duration-300 text-sm sm:text-base" required>
+          <option value="">Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <!-- Multi-select Board -->
+      <div x-data="{
+        open: false,
+        selected: [],
+        toggle(value) {
+          if (value === 'all') { this.selected = ['all']; }
+          else {
+            this.selected = this.selected.filter(i => i !== 'all');
+            if (this.selected.includes(value)) {
+              this.selected = this.selected.filter(i => i !== value);
+            } else {
+              this.selected.push(value);
+            }
+          }
+        }
+      }" class="relative w-full text-sm sm:text-base" data-aos="fade-up" data-aos-delay="700">
+
+        <button type="button" @click="open = !open"
+          class="w-full border border-gray-300 p-3 rounded bg-white flex justify-between items-center focus:outline-none hover:border-blue-400 transition">
+          <span x-text="selected.length ? selected.join(', ') : 'Select Board(s)'"></span>
+          <svg :class="{'rotate-180': open}" class="w-4 h-4 transition-transform"
+            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+
+        <!-- Dropdown -->
+        <div x-show="open" @click.away="open = false" x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+          x-transition:leave="transition ease-in duration-150"
+          x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+          class="absolute w-full mt-2 bg-white border rounded shadow-md z-10 max-h-48 overflow-auto">
+
+          <template x-for="board in ['CBSE','ICSE','State','IB','all']" :key="board">
+            <label class="flex items-center p-2 border-b last:border-0">
+              <input type="checkbox" name="board" :value="board" :checked="selected.includes(board)"
+                @change="toggle(board)" class="mr-2"> <span x-text="board === 'all' ? 'All Boards' : board"></span>
+            </label>
+          </template>
+        </div>
+      </div>
+
+      <!-- Subjects -->
+      <div data-aos="fade-up" data-aos-delay="800">
+        <label class="block font-semibold text-gray-700 text-sm sm:text-base mb-1">Subjects You Teach</label>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+          {% set subjects = ["Mathematics", "Science", "Biology", "Chemistry", "Social Science", "English", "Physics", "Dance", "Music", "Yoga", "Computer"] %}
+          {% for sub in subjects %}
+          <label class="flex items-center"><input type="checkbox" name="subjects" value="{{ sub }}" class="mr-2"> {{ sub }}</label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Terms -->
+      <div data-aos="fade-up" data-aos-delay="900">
+        <label class="flex items-center text-xs sm:text-sm text-gray-600">
+          <input type="checkbox" required class="accent-blue-600 mr-2">
+          I agree to the <a href="{{ url_for('terms') }}" class="text-blue-600 hover:underline ml-1" target="_blank">Terms &amp; Conditions</a>
+        </label>
+      </div>
+
+      <!-- Submit Button -->
+      <div data-aos="zoom-in" data-aos-delay="1000">
+        <button type="submit"
+          class="bg-green-500 hover:bg-green-600 active:scale-95 w-full py-3 rounded text-white font-semibold transition-transform duration-200 shadow-lg">
+          Find Students
+        </button>
+      </div>
+
+    </form>
+  </div>
+</section>
+
 {% endblock %}

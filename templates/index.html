@@ -2,26 +2,39 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="min-h-screen bg-cover bg-center bg-no-repeat"
-  style="background-image: url('{{ url_for('static', filename='img/3784896.jpg') }}';)">
-  <!-- Overlay (optional) -->
-  <!-- <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div> -->
-  <!-- <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div> -->
-  <!-- Foreground content -->
-  <div
-    class="relative z-10 flex flex-col items-center justify-center min-h-screen text-white text-center px-4 bg-black/40 backdrop-blur-sm">
 
-    <h2 class="text-4xl md:text-5xl font-bold mb-6">Welcome to Home Tutor Finder</h2>
-    <div class="flex flex-col sm:flex-row gap-4">
+
+<!-- Hero Section -->
+<div class="relative min-h-screen bg-gradient-to-r from-blue-600 to-indigo-800 flex items-center justify-center px-4 mt-0">
+  
+  <!-- Overlay (Optional: adds dark blur effect for contrast) -->
+  <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-3xl w-full text-center text-white space-y-8">
+    
+    <h1 class="text-4xl sm:text-5xl font-bold leading-tight">
+      Welcome to <span class="text-yellow-300">GuruGO</span> — Home Tutor Finder
+    </h1>
+
+    <p class="text-lg sm:text-xl text-gray-200 max-w-xl mx-auto">
+      Connect with expert tutors or find the best students around you with ease.
+    </p>
+
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
       <a href="/signup-student"
-        class="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-xl shadow text-lg font-semibold">Sign Up
-        as Student</a>
+         class="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-xl shadow text-lg font-semibold transition duration-200">
+        Sign Up as Student
+      </a>
       <a href="/signup-tutor"
-        class="bg-green-400 hover:bg-green-500 text-black px-6 py-3 rounded-xl shadow text-lg font-semibold">Sign Up as
-        Tutor</a>
+         class="bg-green-400 hover:bg-green-500 text-black px-6 py-3 rounded-xl shadow text-lg font-semibold transition duration-200">
+        Sign Up as Tutor
+      </a>
     </div>
   </div>
 </div>
+
+
 <div class="bg-white shadow-lg rounded-lg p-6 max-w-6xl mx-auto my-10">
   <h2 class="text-2xl font-bold text-center text-blue-700 mb-6">How to Get a Free Demo Class</h2>
 
@@ -91,7 +104,47 @@
 
   </div>
 </div>
+<div class="bg-white py-12">
+  <h2 class="text-2xl sm:text-3xl font-bold text-center text-blue-800 mb-8">What Parents Say About GuruGO</h2>
 
+  <div class="overflow-x-hidden relative">
+    <div class="flex animate-slide-x gap-4 sm:gap-6 px-4 sm:px-8 w-[max-content]">
+      {% set testimonials = [
+        {'name': 'Rina Deshmukh', 'area': 'Kharadi', 'review': "i wasnt sure at first but seriously it worked so fast... my daughter got a math tutor in like a day 😄"},
+        {'name': 'Anil Patil', 'area': 'Wagholi', 'review': "the process was smooth... bit confused in beginning but demo class cleared all doubts. good job"},
+        {'name': 'Sangeeta Kulkarni', 'area': 'Viman Nagar', 'review': "i always wanted a female tutor for my daughter n they arranged one in just 2 days. thnk u!"},
+        {'name': 'Rajesh Gokhale', 'area': 'Hadapsar', 'review': "Really professional. website is simple. i got tutor quickly n support team was helpful."},
+        {'name': 'Priya Joshi', 'area': 'Kalyani Nagar', 'review': "Honestly didn’t expect it to be this easy! My son is now doing better in studies, he like his new tutor 😊"},
+        {'name': 'Manoj Ingle', 'area': 'Koregaon Park', 'review': "found science tutor quick. wish i had known about this before. helpful ppl, great idea"},
+        {'name': 'Sunita Chavan', 'area': 'Yerawada', 'review': "good service. as a working mom, time matters and GuruGo made it easy for me"},
+        {'name': 'Arvind Shinde', 'area': 'Magarpatta', 'review': "not bad at all. we did free demo first and the tutor was actually very good. signed up next day"},
+        {'name': 'Meena Bhosale', 'area': 'Kondhwa', 'review': "Really happy! No stress, they handled everything. 10/10 for support & quality"},
+        {'name': 'Sharad Jagtap', 'area': 'NIBM', 'review': "Appreciate the effort. My child needed someone who can explain in marathi and they arranged it. that too in 1 day!"},
+        {'name': 'Deepa Gaikwad', 'area': 'Lohegaon', 'review': "wow this is something pune actually needed. a decent platform for home tuitions!"},
+        {'name': 'Nikhil More', 'area': 'Aundh', 'review': "got demo within few hrs!! really fast. im telling my cousins also about this now."}
+      ] %}
+
+      {% for t in testimonials %}
+      <div class="bg-blue-50 min-w-[250px] sm:min-w-[300px] md:min-w-[350px] p-4 sm:p-6 rounded-xl shadow text-center flex-shrink-0">
+        <p class="text-gray-700 italic mb-3 text-sm sm:text-base">"{{ t.review }}"</p>
+        <h4 class="font-bold text-blue-700 text-sm sm:text-base">{{ t.name }}</h4>
+        <p class="text-xs sm:text-sm text-gray-500">{{ t.area }}, Pune</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- Sliding Animation -->
+<style>
+@keyframes slide-x {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-slide-x {
+  animation: slide-x 90s linear infinite; /* slower for readability */
+}
+</style>
 
 <div class="max-w-7xl mx-auto px-4 py-12">
   <h2 class="text-4xl font-extrabold text-center text-blue-800 mb-12">Choose Your Learning Level</h2>
@@ -122,10 +175,25 @@
       <div class="text-green-600 text-4xl mb-4 group-hover:animate-bounce">
         <i class="fas fa-user-graduate"></i>
       </div>
-      <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-green-800 transition">Class 2 to Class 7</h3>
+      <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-green-800 transition">Class 2 to Class 4</h3>
       <p class="text-sm text-gray-600 mb-4">Build a strong foundation across subjects.</p>
       <ul class="list-disc pl-6 text-gray-700 text-sm space-y-1 mb-6">
-      <li>Class 2 to 5 </li>
+      <li>Class 2  </li>
+        <li>Class 3   </li>
+        <li>Class 4</li>
+      </ul>
+      <a href="/signup-student"
+        class="inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">Find Tutors</a>
+    </div>
+    <div
+      class="bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 hover:bg-green-50 group">
+      <div class="text-green-600 text-4xl mb-4 group-hover:animate-bounce">
+        <i class="fas fa-user-graduate"></i>
+      </div>
+      <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-green-800 transition">Class 5 to Class 7</h3>
+      <p class="text-sm text-gray-600 mb-4">Build a strong foundation across subjects.</p>
+      <ul class="list-disc pl-6 text-gray-700 text-sm space-y-1 mb-6">
+      <li>Class  5 </li>
         <li>Class 6    </li>
         <li>Class 7</li>
       </ul>
@@ -189,10 +257,21 @@
 
   </div>
 </div>
+<!-- Floating Call Button -->
+<a href="tel:+918483811783" 
+   class="fixed bottom-20 right-10 z-50 bg-blue-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg animate-bounce transition-transform hover:scale-110"
+   aria-label="Call Now">
+  <!-- Phone Icon (FontAwesome or SVG) -->
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a1 1 0 01-.293.707l-1 1a16.017 16.017 0 006.586 6.586l1-1A1 1 0 0115 14h2a2 2 0 012 2v2a2 2 0 01-2 2A17 17 0 013 5z"/>
+  </svg>
+</a>
+
+
 <!-- WhatsApp Floating Button -->
 <a href="https://wa.me/918483811783?text=Hi%2C%20I%20am%20interested%20in%20a%20demo%20class"
    target="_blank"
-   class="fixed bottom-5 right-5 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg animate-bounce transition-transform hover:scale-110"
+   class="fixed bottom-3 right-10 z-50 bg-green-400 hover:bg-green-600 text-white p-4 rounded-full shadow-lg animate-bounce transition-transform hover:scale-110"
    title="Chat on WhatsApp">
   <!-- WhatsApp SVG Icon -->
   <span class="[&>svg]:h-7 [&>svg]:w-7 [&>svg]:fill-[#128c7e]">
@@ -205,6 +284,73 @@
       d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
   </svg>
 </a>
+
+
+
+<section class="bg-white py-16">
+  <h2 class="text-4xl font-bold text-center text-blue-700 mb-10">Meet Our Top Tutors</h2>
+
+  <div class="overflow-hidden">
+    <div id="tutorCarousel" class="flex gap-6 w-max px-4 animate-slide-slow">
+      {% set tutors = [
+        {'name': 'Himanshu Thombre', 'subject': 'Math & Science', 'exp': '5+ Years', 'img': 'himanshu.jpeg', 'rating': 5},
+        {'name': 'Anil Mehta', 'subject': 'Physics', 'exp': '3 Years', 'img': 'tutor2.jpg', 'rating': 4},
+        {'name': 'Rita Deshmukh', 'subject': 'English', 'exp': '6 Years', 'img': 'tutor3.jpg', 'rating': 5},
+        {'name': 'Deepak Sapkal', 'subject': 'Chemistry, Math & Science', 'exp': '4 Years', 'img': 'dipak.png', 'rating': 3},
+        {'name': 'Sneha Kulkarni', 'subject': 'Biology', 'exp': '2 Years', 'img': 'tutor5.jpg', 'rating': 4},
+        {'name': 'Vikas Shinde', 'subject': 'History', 'exp': '5 Years', 'img': 'tutor6.jpg', 'rating': 5},
+        {'name': 'Nikita Gaikwad', 'subject': 'Geography', 'exp': '7 Years', 'img': 'tutor7.jpg', 'rating': 5},
+        {'name': 'Soham More', 'subject': 'Computer Science', 'exp': '3 Years', 'img': 'tutor8.jpg', 'rating': 4},
+        {'name': 'Kiran Jadhav', 'subject': 'Economics', 'exp': '4 Years', 'img': 'tutor9.jpg', 'rating': 3},
+        {'name': 'Sonal Joshi', 'subject': 'EVS', 'exp': '6 Years', 'img': 'tutor10.jpg', 'rating': 5}
+      ] %}
+
+      {% for t in tutors %}
+      <div class="bg-white min-w-[280px] max-w-[280px] p-6 rounded-xl border shadow hover:shadow-lg transition-all duration-300">
+        <img src="/static/img/{{ t.img }}" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-blue-100" alt="{{ t.name }}">
+        <h4 class="text-lg font-semibold text-center text-gray-800">{{ t.name }}</h4>
+        <p class="text-sm text-center text-gray-600 mt-1">{{ t.subject }}<br><span class="text-blue-600 font-medium">{{ t.exp }}</span></p>
+        <p class="mt-3 text-center text-yellow-400 text-lg">
+          {% for i in range(t.rating) %}★{% endfor %}
+          {% for i in range(5 - t.rating) %}<span class="text-gray-300">★</span>{% endfor %}
+        </p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<style>
+@keyframes slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-slide-slow {
+  animation: slide 60s linear infinite;
+}
+</style>
+
+
+
+<div class="bg-blue-50 py-10">
+  <h2 class="text-3xl font-bold text-center text-blue-800 mb-6">Why Choose GuruGO?</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 max-w-6xl mx-auto text-center">
+    <div>
+      <div class="text-4xl text-blue-600 mb-2">🔒</div>
+      <h4 class="font-bold text-lg mb-1">Verified Tutors</h4>
+      <p class="text-sm text-gray-600">We manually verify each tutor before listing.</p>
+    </div>
+    <div>
+      <div class="text-4xl text-green-600 mb-2">📞</div>
+      <h4 class="font-bold text-lg mb-1">Personal Assistance</h4>
+      <p class="text-sm text-gray-600">Talk to our experts anytime via call or WhatsApp.</p>
+    </div>
+    <div>
+      <div class="text-4xl text-purple-600 mb-2">⚡</div>
+      <h4 class="font-bold text-lg mb-1">Fast Matching</h4>
+      <p class="text-sm text-gray-600">Get a tutor within 24 hours of your request.</p>
+    </div>
+  </div>
+</div>
 
 
 <script>
